@@ -1,4 +1,4 @@
-FROM python:3.11.2-slim-bullseye AS builder
+FROM python:3.12.5-slim-bullseye AS builder
 
 RUN apt-get update && \
     apt-get upgrade --yes
@@ -27,7 +27,7 @@ RUN python -m pip install . -c constraints.txt && \
     python -m bandit -r src/ --quiet && \
     python -m pip wheel --wheel-dir dist/ . -c constraints.txt
 
-FROM python:3.11.2-slim-bullseye
+FROM python:3.12.5-slim-bullseye
 
 RUN apt-get update && \
     apt-get upgrade --yes
